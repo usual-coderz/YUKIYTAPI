@@ -11,7 +11,7 @@ app = FastAPI(title="YUKI YT API")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE_DIR = os.path.join(BASE_DIR, "YUKIYTAPI", "saved")
-COOKIES_FILE = os.path.join(BASE_DIR, "cookies.txt") # <-- Tera cookies.txt ka path
+COOKIES_FILE = os.path.join(BASE_DIR, "cookies.txt") # <-- 
 os.makedirs(CACHE_DIR, exist_ok=True)
 
 init_db()
@@ -76,7 +76,7 @@ async def stream_music(request: Request, video_id: str, type: str = "audio", tok
     if not os.path.exists(file_path):
         outtmpl = os.path.join(CACHE_DIR, f"{video_id}.%(ext)s")
         
-        # 🔥 SUBPROCESS BRAHMASTRA: Direct CLI execution 🔥
+        
         if type == "audio":
             cmd = [
                 "yt-dlp",
@@ -102,7 +102,7 @@ async def stream_music(request: Request, video_id: str, type: str = "audio", tok
             ]
 
         try:
-            # API background mein same wahi shell command chalayega jo tu terminal pe chalata hai
+            #
             process = await asyncio.create_subprocess_exec(
                 *cmd,
                 stdout=asyncio.subprocess.PIPE,
